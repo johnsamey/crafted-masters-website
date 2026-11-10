@@ -301,14 +301,14 @@ section { position: relative; }
 
 /* ---- Credibility strip ---- */
 .cred {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
   background: rgba(255,255,255,.14);
   border-radius: var(--radius); overflow: hidden;
 }
 .cred > div {
   background: var(--blue); padding: 26px 20px; text-align: center;
 }
-.cred .n { font-family: var(--font-display); font-size: 1.9rem; color: var(--apple); }
+.cred .n { font-family: var(--font-display); font-size: 1.9rem; line-height: 1.05; color: var(--apple); }
 .cred .l { font-family: var(--font-round); font-size: .8rem; letter-spacing: 1px; text-transform: uppercase; opacity: .85; }
 
 /* ---- Category cards ---- */
