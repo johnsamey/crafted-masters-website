@@ -1,5 +1,5 @@
 /* ============================================================
-   CRAFTED MASTERS — site interactions
+   CRAFTED MASTERS - site interactions
    ============================================================ */
 (function () {
   'use strict';
@@ -67,7 +67,7 @@
       e.preventDefault();
       var status = form.querySelector('.form-status');
       if (status) {
-        status.textContent = 'Thanks! Your message is ready — connect this form to email or a form service to go live.';
+        status.textContent = 'Thanks! Your message is ready - connect this form to email or a form service to go live.';
         status.style.color = 'var(--green)';
       }
       form.reset();
