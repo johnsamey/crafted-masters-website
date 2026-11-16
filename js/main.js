@@ -145,6 +145,22 @@
 
     hs.addEventListener('mouseenter', stop);
     hs.addEventListener('mouseleave', start);
+
+    /* Swipe left/right on touch screens (vertical scrolling is left alone) */
+    var touchX = null, touchY = null;
+    hs.addEventListener('touchstart', function (e) {
+      touchX = e.touches[0].clientX; touchY = e.touches[0].clientY;
+    }, { passive: true });
+    hs.addEventListener('touchend', function (e) {
+      if (touchX === null) return;
+      var dx = e.changedTouches[0].clientX - touchX;
+      var dy = e.changedTouches[0].clientY - touchY;
+      touchX = touchY = null;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+        go(idx + (dx < 0 ? 1 : -1));
+        restart();
+      }
+    }, { passive: true });
     document.addEventListener('visibilitychange', function () {
       if (document.hidden) stop(); else start();
     });
