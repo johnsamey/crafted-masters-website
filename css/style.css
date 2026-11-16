@@ -5,10 +5,10 @@
 
 /* ---- Brand tokens (from the branding slip) ---- */
 :root {
-  --blue:   #1E2DBE;   /* Royal Blue */
-  --blue-deep: #161F8C;
-  --ivory:  #EDE0C8;   /* Ivory / cream */
-  --ivory-soft: #F5ECD9;
+  --blue:   #1731A1;   /* Royal Blue (matches logo file) */
+  --blue-deep: #112476;
+  --ivory:  #F2E1C7;   /* Ivory / cream (matches logo file) */
+  --ivory-soft: #F8EEDD;
   --green:  #3FBF6A;   /* Green */
   --apple:  #C7E06A;   /* Apple */
   --sky:    #A9D2F2;   /* Sky Blue */
@@ -104,7 +104,7 @@ h1, h2, h3 { line-height: 1.05; margin: 0 0 .4em; }
 .site-header {
   position: sticky; top: 0; z-index: 100;
   background: var(--ivory);
-  border-bottom: 2px solid rgba(30, 45, 190, .12);
+  border-bottom: 2px solid rgba(23,49,161, .12);
   transition: box-shadow .2s ease;
 }
 .site-header.scrolled { box-shadow: 0 6px 24px rgba(21,24,74,.10); }
@@ -112,23 +112,8 @@ h1, h2, h3 { line-height: 1.05; margin: 0 0 .4em; }
   display: flex; align-items: center; justify-content: space-between;
   min-height: 74px;
 }
-.brand { display: flex; flex-direction: column; line-height: 1; }
-.brand .brand-main {
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  color: var(--blue);
-  letter-spacing: .5px;
-}
-.brand .brand-sub {
-  font-family: var(--font-round);
-  font-weight: 600;
-  font-size: .62rem;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  color: var(--ink);
-  opacity: .75;
-  margin-top: 3px;
-}
+.brand { display: flex; align-items: center; }
+.brand img { height: 56px; width: auto; }
 .nav-links { display: flex; align-items: center; gap: 6px; list-style: none; margin: 0; padding: 0; }
 .nav-links a {
   font-family: var(--font-round);
@@ -137,7 +122,7 @@ h1, h2, h3 { line-height: 1.05; margin: 0 0 .4em; }
   border-radius: 100px;
   transition: background .15s ease, color .15s ease;
 }
-.nav-links a:hover { background: rgba(30,45,190,.08); }
+.nav-links a:hover { background: rgba(23,49,161,.08); }
 .nav-links a.active { background: var(--blue); color: var(--ivory); }
 .nav-cta { margin-left: 10px; }
 
@@ -266,10 +251,10 @@ h1, h2, h3 { line-height: 1.05; margin: 0 0 .4em; }
 }
 .hs-dot {
   width: 20px; height: 4px; padding: 0; border: 0; border-radius: 100px;
-  background: rgba(237,224,200,.42); cursor: pointer;
+  background: rgba(242,225,199,.42); cursor: pointer;
   transition: background .3s ease, width .3s ease;
 }
-.hs-dot:hover { background: rgba(237,224,200,.7); }
+.hs-dot:hover { background: rgba(242,225,199,.7); }
 .hs-dot.is-active { background: var(--apple); width: 32px; }
 .hs-dot:focus-visible { outline: 2px solid var(--apple); outline-offset: 3px; }
 
@@ -371,7 +356,7 @@ section { position: relative; }
 .product-nav {
   position: sticky; top: 74px; z-index: 50;
   background: var(--ivory-soft);
-  border-bottom: 1px solid rgba(30,45,190,.12);
+  border-bottom: 1px solid rgba(23,49,161,.12);
 }
 .product-nav ul {
   display: flex; gap: 8px; list-style: none; margin: 0; padding: 14px 0; overflow-x: auto;
@@ -397,7 +382,7 @@ section { position: relative; }
 .more-range { margin-top: 34px; }
 .more-range h4 { font-family: var(--font-round); font-size: .8rem; letter-spacing: 2px; text-transform: uppercase; color: var(--blue); margin: 0 0 14px; }
 .more-range ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
-.more-range li { background: var(--paper); border: 1.5px solid rgba(30,45,190,.18); border-radius: 999px; padding: 8px 16px; font-family: var(--font-round); font-weight: 500; font-size: .88rem; color: var(--ink); }
+.more-range li { background: var(--paper); border: 1.5px solid rgba(23,49,161,.18); border-radius: 999px; padding: 8px 16px; font-family: var(--font-round); font-weight: 500; font-size: .88rem; color: var(--ink); }
 .p-card {
   background: var(--paper); border-radius: var(--radius); overflow: hidden;
   box-shadow: var(--shadow-sm); transition: transform .2s ease, box-shadow .2s ease;
@@ -426,7 +411,7 @@ section { position: relative; }
 .field { margin-bottom: 16px; }
 .field label { display: block; font-family: var(--font-round); font-weight: 600; font-size: .8rem; letter-spacing: .5px; text-transform: uppercase; margin-bottom: 7px; }
 .field input, .field textarea, .field select {
-  width: 100%; padding: 13px 15px; border: 2px solid rgba(30,45,190,.18);
+  width: 100%; padding: 13px 15px; border: 2px solid rgba(23,49,161,.18);
   border-radius: 12px; font-family: var(--font-body); font-size: .95rem; background: var(--ivory-soft);
   transition: border-color .15s ease;
 }
@@ -446,8 +431,7 @@ section { position: relative; }
 .footer-grid h5 { font-family: var(--font-round); font-weight: 700; letter-spacing: 1px; text-transform: uppercase; font-size: .82rem; color: var(--apple); margin: 0 0 16px; }
 .footer-grid a, .footer-grid p { display: block; opacity: .82; margin-bottom: 9px; font-size: .92rem; }
 .footer-grid a:hover { opacity: 1; color: var(--apple); }
-.footer-brand .brand-main { font-family: var(--font-display); font-size: 1.6rem; color: var(--ivory); }
-.footer-brand .brand-sub { font-family: var(--font-round); font-weight: 600; font-size: .62rem; letter-spacing: 2.5px; text-transform: uppercase; opacity: .7; margin-top: 4px; }
+.footer-logo { height: 84px; width: auto; }
 .footer-brand p { max-width: 34ch; margin-top: 16px; }
 .footer-bottom { border-top: 1px solid rgba(255,255,255,.14); padding-top: 22px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: .85rem; opacity: .75; }
 
@@ -489,7 +473,7 @@ section { position: relative; }
     position: fixed; inset: 74px 0 auto 0;
     flex-direction: column; align-items: stretch; gap: 2px;
     background: var(--ivory); padding: 16px 24px 24px;
-    border-bottom: 2px solid rgba(30,45,190,.12);
+    border-bottom: 2px solid rgba(23,49,161,.12);
     transform: translateY(-12px); opacity: 0; visibility: hidden; pointer-events: none;
     transition: transform .28s ease, opacity .2s ease, visibility 0s linear .28s; box-shadow: var(--shadow);
   }
@@ -528,7 +512,7 @@ section { position: relative; }
 @media (max-width: 380px) {
   .grid-products { gap: 10px; }
   .p-card h3 { font-size: .86rem; }
-  .brand .brand-main { font-size: 1.3rem; }
+  .brand img { height: 48px; }
 }
 
 /* ============================================================
@@ -548,7 +532,7 @@ section { position: relative; }
 .site-footer .social { margin-top: 20px; }
 .site-footer .social a {
   margin: 0; opacity: 1;
-  background: rgba(237,224,200,.12); color: var(--ivory);
+  background: rgba(242,225,199,.12); color: var(--ivory);
 }
 .site-footer .social a:hover { background: var(--apple); color: var(--blue-deep); }
 .site-footer .social a:focus-visible { outline-color: var(--apple); }
