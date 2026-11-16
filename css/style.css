@@ -530,3 +530,25 @@ section { position: relative; }
   .p-card h3 { font-size: .86rem; }
   .brand .brand-main { font-size: 1.3rem; }
 }
+
+/* ============================================================
+   SOCIAL LINKS (footer + contact page)
+   ============================================================ */
+.social { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+.social a {
+  width: 40px; height: 40px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--blue); color: var(--apple);
+  transition: transform .18s ease, background .18s ease, color .18s ease;
+}
+.social a:hover { transform: translateY(-2px); background: var(--blue-deep); }
+.social a:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+.social svg { width: 18px; height: 18px; display: block; }
+
+.site-footer .social { margin-top: 20px; }
+.site-footer .social a {
+  margin: 0; opacity: 1;
+  background: rgba(237,224,200,.12); color: var(--ivory);
+}
+.site-footer .social a:hover { background: var(--apple); color: var(--blue-deep); }
+.site-footer .social a:focus-visible { outline-color: var(--apple); }
