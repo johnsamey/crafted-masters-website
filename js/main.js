@@ -1,10 +1,6 @@
-/* ============================================================
-   CRAFTED MASTERS - site interactions
-   ============================================================ */
 (function () {
   'use strict';
 
-  /* ---- Mobile nav toggle ---- */
   var toggle = document.querySelector('.nav-toggle');
   var links = document.querySelector('.nav-links');
   if (toggle && links) {
@@ -22,7 +18,6 @@
     });
   }
 
-  /* ---- Header shadow on scroll ---- */
   var header = document.querySelector('.site-header');
   if (header) {
     var onScroll = function () {
@@ -32,7 +27,6 @@
     window.addEventListener('scroll', onScroll, { passive: true });
   }
 
-  /* ---- Graceful images: fade in real photos, keep placeholder if missing ---- */
   document.querySelectorAll('.media img').forEach(function (img) {
     var reveal = function () { img.classList.add('loaded'); };
     if (img.complete && img.naturalWidth > 0) {
@@ -40,14 +34,12 @@
     } else {
       img.addEventListener('load', reveal);
       img.addEventListener('error', function () {
-        /* leave the styled placeholder (::after) visible */
         img.classList.remove('loaded');
         img.style.display = 'none';
       });
     }
   });
 
-  /* ---- Reveal on scroll ---- */
   var reveals = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window && reveals.length) {
     var io = new IntersectionObserver(function (entries) {
@@ -60,7 +52,6 @@
     reveals.forEach(function (el) { el.classList.add('in'); });
   }
 
-  /* ---- Contact form (sends via Web3Forms to the company inbox) ---- */
   var form = document.querySelector('#contact-form');
   if (form) {
     var status = form.querySelector('.form-status');
@@ -76,7 +67,6 @@
     form.addEventListener('submit', function (e) {
       e.preventDefault();
 
-      /* Basic required-field check (name + email) */
       if (!form.checkValidity()) {
         form.reportValidity();
         return;
@@ -108,7 +98,6 @@
     });
   }
 
-  /* ---- Hero slideshow ---- */
   var hs = document.querySelector('.hero-slideshow');
   if (hs) {
     var slides = Array.prototype.slice.call(hs.querySelectorAll('.hs-slide'));
@@ -146,7 +135,6 @@
     hs.addEventListener('mouseenter', stop);
     hs.addEventListener('mouseleave', start);
 
-    /* Swipe left/right on touch screens (vertical scrolling is left alone) */
     var touchX = null, touchY = null;
     hs.addEventListener('touchstart', function (e) {
       touchX = e.touches[0].clientX; touchY = e.touches[0].clientY;
@@ -167,7 +155,18 @@
     start();
   }
 
-  /* ---- Footer year ---- */
+  var chips = document.querySelector('.product-nav ul');
+  if (chips) {
+    var updateChips = function () {
+      var max = chips.scrollWidth - chips.clientWidth;
+      chips.classList.toggle('more-left', max > 1 && chips.scrollLeft > 1);
+      chips.classList.toggle('more-right', max > 1 && chips.scrollLeft < max - 1);
+    };
+    updateChips();
+    chips.addEventListener('scroll', updateChips, { passive: true });
+    window.addEventListener('resize', updateChips);
+  }
+
   var y = document.querySelector('#year');
   if (y) { y.textContent = new Date().getFullYear(); }
 })();
