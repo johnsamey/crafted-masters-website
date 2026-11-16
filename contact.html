@@ -73,7 +73,13 @@
 
     <!-- Form -->
     <div class="form reveal">
-      <form id="contact-form" novalidate>
+      <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+        <!-- Web3Forms: replace the value below with your own access key (see note). Delivers submissions to info@masters-foods.com -->
+        <input type="hidden" name="access_key" value="ba9deade-c434-41dc-948e-777baba2bccf">
+        <input type="hidden" name="subject" value="New Partner Enquiry - Crafted Masters Website">
+        <input type="hidden" name="from_name" value="Crafted Masters Website">
+        <!-- Honeypot: real people never see or fill this; bots do, and get blocked -->
+        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
         <div class="row">
           <div class="field">
             <label for="name">Full name</label>

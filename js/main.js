@@ -60,17 +60,51 @@
     reveals.forEach(function (el) { el.classList.add('in'); });
   }
 
-  /* ---- Contact form (front-end only; no backend configured) ---- */
+  /* ---- Contact form (sends via Web3Forms to the company inbox) ---- */
   var form = document.querySelector('#contact-form');
   if (form) {
+    var status = form.querySelector('.form-status');
+    var submitBtn = form.querySelector('button[type="submit"]');
+    var btnLabel = submitBtn ? submitBtn.textContent : 'Send Enquiry';
+
+    var setStatus = function (msg, color) {
+      if (!status) return;
+      status.textContent = msg;
+      status.style.color = color;
+    };
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      var status = form.querySelector('.form-status');
-      if (status) {
-        status.textContent = 'Thanks! Your message is ready - connect this form to email or a form service to go live.';
-        status.style.color = 'var(--green)';
+
+      /* Basic required-field check (name + email) */
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
       }
-      form.reset();
+
+      if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending...'; }
+      setStatus('Sending your enquiry...', 'var(--ink)');
+
+      fetch(form.action, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
+      })
+        .then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
+        .then(function (r) {
+          if (r.ok && r.data.success) {
+            form.reset();
+            setStatus('Thanks! Your enquiry has been sent - our team will be in touch shortly.', 'var(--green)');
+          } else {
+            setStatus((r.data && r.data.message) ? r.data.message : 'Something went wrong. Please email us directly at info@masters-foods.com.', '#c0392b');
+          }
+        })
+        .catch(function () {
+          setStatus('Network error. Please check your connection or email us at info@masters-foods.com.', '#c0392b');
+        })
+        .finally(function () {
+          if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = btnLabel; }
+        });
     });
   }
 
